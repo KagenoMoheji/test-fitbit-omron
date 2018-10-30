@@ -1,0 +1,2 @@
+psycopg2-binary==2.7.5
+fitbit==0.3.0
