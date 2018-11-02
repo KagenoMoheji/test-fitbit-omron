@@ -30,6 +30,7 @@ class SensorProcess():
             raw_data = self.client.intraday_time_series("activities/heart", base_date="today", detail_level="1min", start_time="{0}:{1}".format(today_before_minutes.hour, today_before_minutes.minute), end_time="{0}:{1}".format(datetime.datetime.now().hour, datetime.datetime.now().minute))
             list_of_dict_cal_time = raw_data["activities-heart-intraday"]["dataset"]
             len_dicts_cal_time = len(list_of_dict_cal_time)
+            print("\n\n\n\n\n\n\n\nlist_of_dict_cal_time : {0}\n\n\n\n\n\n\n".format(list_of_dict_cal_time))
 
             #カロリーのリストを作成
             calories_list =[]
