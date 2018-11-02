@@ -64,7 +64,7 @@ class SensorProcess():
                 self.dp.dbInsert(tmp)
                 # data_from_fitbit.append(tmp)
             '''
-            print("\n\n\n\n\n\n\n\ntmp : {0}\n\n\n\n\n\n\n".format(calories_list[len_dicts_cal_time-1]))
+            print("\n\n\n\n\n\n\n\ntmp : {0}\n\n\n\n\n\n\n".format(len_dicts_cal_time-))
             tmp = {"user_id":"a001", "datetime": datetime_time[len_dicts_cal_time-1], "calorie": calories_list[len_dicts_cal_time-1]}
             self.dp.dbInsert(tmp)
             count += 1
