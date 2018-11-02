@@ -19,12 +19,12 @@ class SensorProcess():
                             )
 
     def getDataFromFitbit(self):
-        count = 0 # 10000レコード(2000回)のカウントに使う
+        # count = 0 # 10000レコード(2000回)のカウントに使おうと思ったがサーバを再起動したら意味がないな．
         # data_from_fitbit = []
-        while count < 2000: # 2000*2/60 = 66時間分．
+        while True: # ここの条件でDBのための変数countを使うつもりだった
             #現在の年月日，時刻
             today = datetime.datetime.now()
-            today_before_minutes = today + datetime.timedelta(minutes=-5)
+            today_before_minutes = today + datetime.timedelta(minutes=-3) # -5
 
             #消費カロリー関連のデータ取得
             raw_data = self.client.intraday_time_series("activities/heart", base_date="today", detail_level="1min", start_time="{0}:{1}".format(today_before_minutes.hour, today_before_minutes.minute), end_time="{0}:{1}".format(datetime.datetime.now().hour, datetime.datetime.now().minute))
@@ -65,10 +65,10 @@ class SensorProcess():
                 self.dp.dbInsert(tmp)
                 # data_from_fitbit.append(tmp)
             '''
-            print("\n\n\n\n\n\n\n\ntmp : {0}\n\n\n\n\n\n\n".format(len_dicts_cal_time))
+            # print("\n\n\n\n\n\n\n\ntmp : {0}\n\n\n\n\n\n\n".format(len_dicts_cal_time))
             tmp = {"user_id":"a001", "datetime": datetime_time[len_dicts_cal_time-1], "calorie": calories_list[len_dicts_cal_time-1]}
             self.dp.dbInsert(tmp)
-            count += 1
+            # count += 1
             time.sleep(120)
 
 '''
