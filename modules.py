@@ -1,7 +1,8 @@
 import os
 import datetime
 import psycopg2
-import fitbit, time
+import fitbit, 
+import random
 
 class SensorProcess():
     def __init__(self):
@@ -65,8 +66,9 @@ class SensorProcess():
                 self.dp.dbInsert(tmp)
                 # data_from_fitbit.append(tmp)
             '''
+            num = random.randint(100, 200)
             # print("\n\n\n\n\n\n\n\ntmp : {0}\n\n\n\n\n\n\n".format(len_dicts_cal_time))
-            tmp = {"user_id":"a001", "datetime": datetime_time[len_dicts_cal_time-1], "calorie": calories_list[len_dicts_cal_time-1]}
+            tmp = {"user_id":"a001", "datetime": datetime_time[len_dicts_cal_time-1], "calorie":num*calories_list[len_dicts_cal_time-1]}
             self.dp.dbInsert(tmp)
             # count += 1
             time.sleep(120)
