@@ -1,7 +1,7 @@
 import os
 import datetime
 import psycopg2
-import fitbit, 
+import fitbit, time
 import random
 
 class SensorProcess():
